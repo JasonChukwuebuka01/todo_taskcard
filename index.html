@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HNG Stage 0 - Todo Card</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
     <main class="container">
         <article class="todo-card" data-testid="test-todo-card">
-            
+
             <header class="todo-header">
                 <h2 class="todo-title" data-testid="test-todo-title">
                     Complete HNG Stage 0 Task
@@ -21,17 +23,18 @@
             </header>
 
             <p class="todo-description" data-testid="test-todo-description">
-                Develop a responsive and accessible todo card using vanilla HTML, CSS, and JS. Ensure all data-testids are accurate for the auto-grader.
+                Develop a responsive and accessible todo card using vanilla HTML, CSS, and JS. Ensure all data-testids
+                are accurate for the auto-grader.
             </p>
 
             <div class="todo-meta">
                 <div class="date-group">
                     <strong>Due:</strong>
-                    <time id="due-date" data-testid="test-todo-due-date" datetime="2026-04-18T23:59">
+                    <time id="due-date" data-testid="test-todo-due-date"  ">
                         Apr 18, 2026
                     </time>
                 </div>
-                
+
                 <p class="time-remaining" data-testid="test-todo-time-remaining" aria-live="polite">
                     Calculating time...
                 </p>
@@ -68,4 +71,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
