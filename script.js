@@ -1,8 +1,4 @@
-/**
- * 1. CONFIGURATION
- * We set a fixed due date. In a real app, this might come from a database.
- * Format: Year, Month (0-indexed, so 3 = April), Day, Hour, Minute
- */
+
 const dueDate = new Date(2026, 3, 22, 23, 12);
 
 
@@ -57,7 +53,7 @@ function updateTimeRemaining() {
     }
 
 
-    //  THE OVERDUE LOGIC (Time is in the past)
+    // (Time is in the past)
     else if (diff < 0) {
         if (days > 0) {
             timeText = `Overdue by ${days} day${days > 1 ? 's' : ''}`;
@@ -69,7 +65,7 @@ function updateTimeRemaining() {
         timeRemainingElement.style.color = "var(--danger-red)";
     }
 
-    // 3. THE FUTURE LOGIC (Time is in the future)
+    //  (Time is in the future)
     else {
         if (days > 0) {
             timeText = `Due in ${days} day${days > 1 ? 's' : ''}`;
