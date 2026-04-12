@@ -156,28 +156,78 @@ body {
     gap: 8px;
 }
 
+/* Buttons - Improved for accessibility, hover, focus, and responsiveness */
 button {
-    padding: 8px 16px;
-    border-radius: 6px;
-    border: 1px solid var(--border-color);
-    background: white;
-    cursor: pointer;
+    padding: 10px 20px;
+    /* Better touch target (min ~44px height) */
+    border-radius: 8px;
+    border: 1.5px solid var(--border-color);
+    background-color: #ffffff;
+    color: var(--text-main);
     font-size: 0.875rem;
     font-weight: 500;
-    transition: all 0.2s;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    min-height: 44px;
+    /* Ensures good tap target on mobile */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
 }
+
 
 button:hover {
     background-color: var(--bg-gray);
+    border-color: var(--primary-blue);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(37, 99, 235, 0.1);
 }
 
-button:focus {
+button:focus-visible {
     outline: 2px solid var(--primary-blue);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+/* Edit Button */
+.btn-edit {
+    background-color: #f8fafc;
+    color: var(--primary-blue);
+    border-color: #dbeafe;
+}
+
+.btn-edit:hover {
+    background-color: #eff6ff;
+    border-color: var(--primary-blue);
+    color: #1e40af;
+}
+
+
+
+
+.btn-delete {
+    background-color: #fef2f2;
+    color: var(--danger-red);
+    border-color: #fecaca;
 }
 
 .btn-delete:hover {
-    color: var(--danger-red);
+    background-color: #fee2e2;
     border-color: var(--danger-red);
+    color: #b91c1c;
+}
+
+/* Make buttons full width on very small mobile */
+@media (max-width: 380px) {
+    .action-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .action-buttons button {
+        width: 100%;
+    }
 }
 
 /*  The "Completed" State (JS will trigger this) */

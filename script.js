@@ -23,6 +23,16 @@ const deleteButton = document.querySelector('[data-testid="test-todo-delete-butt
 
 
 
+
+function formatDueDate() {
+    timeBox.textContent = dueDate.toLocaleDateString('en-US', {
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric'
+    });
+}
+
+
 /**
  * This function calculates the difference between "Now" and the "Due Date"
  */
@@ -72,11 +82,6 @@ function updateTimeRemaining() {
     }
 
     timeRemainingElement.textContent = timeText;
-    timeBox.textContent = `${dueDate.toLocaleString('en-US', {
-        month: 'short',
-        day: 'numeric',
-        year: 'numeric',
-    })} `;
 };
 
 
@@ -98,8 +103,11 @@ checkbox.addEventListener('change', () => {
     }
 });
 
-// Run the time calculation immediately when the page loads
+
+
+// Run the time calculation/set due date immediately when the page loads
 updateTimeRemaining();
+formatDueDate();
 
 // Update the time every minute so it stays accurate
 setInterval(updateTimeRemaining, 60000);
@@ -108,12 +116,9 @@ setInterval(updateTimeRemaining, 60000);
 
 
 editbutton.addEventListener('click', () => {
-    alert("Edit functionality is not implemented in this demo.");
+    console.log("edit clicked")
 });
 
 deleteButton.addEventListener('click', () => {
-    const confirmDelete = confirm("Are you sure you want to delete this task?");
-    if (confirmDelete) {
-        todoCard.remove();
-    }
+    alert("Delete clicked");
 });
