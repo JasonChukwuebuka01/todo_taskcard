@@ -222,12 +222,12 @@ button:focus-visible {
 
 /* Make buttons full width on very small mobile */
 @media (max-width: 380px) {
-    .action-buttons {
+    .action-buttons, .edit-actions {
         flex-direction: column;
         width: 100%;
     }
 
-    .action-buttons button {
+    .action-buttons button, .edit-actions button {
         width: 100%;
     }
 }
@@ -339,4 +339,20 @@ button:focus-visible {
     border-radius: 4px;
     font-size: 0.75rem;
     text-transform: uppercase;
+}
+
+
+
+/* Distinct style for "In Progress" state */
+.status-in-progress {
+    border: 2px solid #3498db; /* A solid blue border */
+    background-color: #f0f8ff; /* A very light blue tint */
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.3); /* A subtle blue glow */
+    transition: all 0.3s ease; /* Smooth transition when status changes */
+}
+
+/* Optional: Pulse effect for the "In Progress" badge to show activity */
+.status-in-progress .status-text {
+    color: #2980b9;
+    font-weight: bold;
 }
