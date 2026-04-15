@@ -1,3 +1,16 @@
+// The "Brain" - holds the current data for the app
+let state = {
+    title: "Complete HNG Stage 1 Task",
+    description: "Extend the Stage 0 card with interactive features like edit mode and priority levels.",
+    priority: "High", // Options: Low, Medium, High
+    status: "Pending", // Options: Pending, In Progress, Done
+    dueDate: new Date("2026-04-17T23:59:00"),
+    isEditing: false,
+    isExpanded: false
+};
+
+
+
 
 const dueDate = new Date(2026, 3, 22, 23, 12);
 
@@ -12,9 +25,18 @@ const timeRemainingElement = document.querySelector('[data-testid="test-todo-tim
 const timeBox = document.querySelector('[data-testid="test-todo-due-date"]');
 const checkbox = document.querySelector('[data-testid="test-todo-complete-toggle"]');
 const statusText = document.querySelector('[data-testid="test-todo-status"]');
+const statusDropdown = document.getElementById('status-control');
 const todoCard = document.querySelector('[data-testid="test-todo-card"]');
 const editbutton = document.querySelector('[data-testid="test-todo-edit-button"]');
 const deleteButton = document.querySelector('[data-testid="test-todo-delete-button"]');
+
+const viewMode = document.getElementById('todo-view-mode');
+const editMode = document.getElementById('todo-edit-mode');
+
+const cancelBtn = document.getElementById('cancel-btn');
+
+const expandBtn = document.querySelector('[data-testid="test-todo-expand-toggle"]');
+const descriptionContainer = document.querySelector('[data-testid="test-todo-collapsible-section"]');
 
 
 
@@ -85,19 +107,6 @@ function updateTimeRemaining() {
 
 
 
-/**
- * 
- * This listens for the user clicking the checkbox
- */
-checkbox.addEventListener('change', () => {
-    if (checkbox.checked) {
-        todoCard.classList.add('is-completed');
-        statusText.textContent = "Done";
-    } else {
-        todoCard.classList.remove('is-completed');
-        statusText.textContent = "Pending";
-    }
-});
 
 
 
@@ -109,12 +118,75 @@ formatDueDate();
 setInterval(updateTimeRemaining, 60000);
 
 
+// Initialize as collapsed on page load
+descriptionContainer.classList.add('collapsed');
 
 
-editbutton.addEventListener('click', () => {
-    console.log("edit clicked")
-});
+
+
+
+function toggleDisplay(isEditing) {
+    if (isEditing) {
+        // Show Form, Hide Card
+        viewMode.style.display = 'none';
+        editMode.style.display = 'block';
+
+        // Accessibility: Focus the first input when opening edit mode
+        document.getElementById('edit-title').focus();
+    } else {
+        // Show Card, Hide Form
+        viewMode.style.display = 'block';
+        editMode.style.display = 'none';
+
+        // Accessibility: Return focus to the Edit button when closing
+        editbutton.focus();
+    }
+}
+
+
+
+
+
 
 deleteButton.addEventListener('click', () => {
     alert("Delete clicked");
+});
+
+
+editbutton.addEventListener('click', () => toggleDisplay(true));
+
+cancelBtn.addEventListener('click', () => toggleDisplay(false));
+
+expandBtn.addEventListener('click', () => {
+
+    const isCollapsed = descriptionContainer.classList.toggle('collapsed');
+    expandBtn.textContent = isCollapsed ? 'Show More' : 'Show Less';
+    //  Update Accessibility
+    expandBtn.setAttribute('aria-expanded', !isCollapsed);
+});
+
+
+
+
+//This listens for the user clicking the checkbox
+checkbox.addEventListener('change', () => {
+    if (checkbox.checked) {
+        todoCard.classList.add('is-completed');
+        statusText.textContent = "Done";
+        statusDropdown.value = "Done";
+    } else {
+        todoCard.classList.remove('is-completed');
+        statusText.textContent = "Pending";
+        statusDropdown.value = "Pending";
+    }
+});
+
+
+
+// Handle Dropdown Change
+statusDropdown.addEventListener('change', () => {
+    statusText.textContent = statusDropdown.value;
+
+    // Sync the checkbox
+    checkbox.checked = (statusDropdown.value === "Done");
 });
