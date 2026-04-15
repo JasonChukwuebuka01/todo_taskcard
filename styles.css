@@ -1,5 +1,6 @@
 :root {
     --primary-blue: #2563eb;
+    --primary-yellow: #ffa500;
     --success-green: #059669;
     --danger-red: #dc2626;
     --text-main: #1f2937;
@@ -69,6 +70,10 @@ body {
     font-size: 1.25rem;
     font-weight: 700;
     color: var(--text-main);
+    overflow-wrap: anywhere;  
+    word-break: normal;       
+    display: block;            
+    line-height: 1.4;          
 }
 
 .priority-badge {
@@ -255,7 +260,6 @@ button:focus-visible {
 .collapsed {
     display: -webkit-box;
     -webkit-line-clamp: 2;
-    /* Shows only 2 lines */
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -343,11 +347,12 @@ button:focus-visible {
 
 
 
+
 /* Distinct style for "In Progress" state */
 .status-in-progress {
     border: 2px solid #3498db; /* A solid blue border */
     background-color: #f0f8ff; /* A very light blue tint */
-    box-shadow: 0 0 10px rgba(52, 152, 219, 0.3); /* A subtle blue glow */
+    box-shadow: 0 0 15px rgba(52, 152, 219, 0.3); /* A subtle blue glow */
     transition: all 0.3s ease; /* Smooth transition when status changes */
 }
 
