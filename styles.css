@@ -70,10 +70,10 @@ body {
     font-size: 1.25rem;
     font-weight: 700;
     color: var(--text-main);
-    overflow-wrap: anywhere;  
-    word-break: normal;       
-    display: block;            
-    line-height: 1.4;          
+    overflow-wrap: anywhere;
+    word-break: normal;
+    display: block;
+    line-height: 1.4;
 }
 
 .priority-badge {
@@ -92,6 +92,10 @@ body {
     color: var(--text-muted);
     font-size: 0.95rem;
     margin-bottom: 20px;
+    overflow-wrap: anywhere;
+    word-break: normal;
+    display: block;
+    line-height: 1.4;
 }
 
 .todo-meta {
@@ -227,12 +231,15 @@ button:focus-visible {
 
 /* Make buttons full width on very small mobile */
 @media (max-width: 380px) {
-    .action-buttons, .edit-actions {
+
+    .action-buttons,
+    .edit-actions {
         flex-direction: column;
         width: 100%;
     }
 
-    .action-buttons button, .edit-actions button {
+    .action-buttons button,
+    .edit-actions button {
         width: 100%;
     }
 }
@@ -350,10 +357,14 @@ button:focus-visible {
 
 /* Distinct style for "In Progress" state */
 .status-in-progress {
-    border: 2px solid #3498db; /* A solid blue border */
-    background-color: #f0f8ff; /* A very light blue tint */
-    box-shadow: 0 0 15px rgba(52, 152, 219, 0.3); /* A subtle blue glow */
-    transition: all 0.3s ease; /* Smooth transition when status changes */
+    border: 2px solid #3498db;
+    /* A solid blue border */
+    background-color: #f0f8ff;
+    /* A very light blue tint */
+    box-shadow: 0 0 15px rgba(52, 152, 219, 0.3);
+    /* A subtle blue glow */
+    transition: all 0.3s ease;
+    /* Smooth transition when status changes */
 }
 
 /* Optional: Pulse effect for the "In Progress" badge to show activity */
